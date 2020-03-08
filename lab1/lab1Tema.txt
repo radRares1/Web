@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<header>
+    <h1 style="text-align"= centre>Title</h1>
+    <p>An electrionic dance music genre</p>
+  </header>
+
+
+
+
+<img src="dnb.img" alt="DNB image" height="42" width="42">
+
+<br></br>
+
+<nav>
+<a href="https://www.w3schools.com">WikiDnb</a>
+<a href="link2">Link2</a>
+</nav>
+
+<main>
+
+<br></br>
+
+<hr></hr>
+
+<table style="width:100%">
+  <tr>
+    <th>Subgenre</th>
+    <th>Started Year</th>
+    <th>Place were it started</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+<hr></hr>
+
+<div style="background-color:lightblue">
+  <h2>About Dnb</h2>
+  <p>Text about dnb</p>
+</div>
+
+<br></br>
+
+<div class="row">
+  <div class="column">
+<p>Where can you listen to dnb</p>
+<ul>
+  <li>Youtube</li>
+  <li>Spotify</li>
+  <li>Live concerts</li>
+</ul></div>
+  <div class="column">
+<p>Dnb artists that I've seen live</p>
+<ol>
+  <li>Noisia</li>
+  <li>Macky Gee</li>
+  <li>MadLiquid</li>
+</ol></div>
+</div>
+
+
+
+<section>
+  <h3>Why I like this genre</h3>
+  <p>Text</p>
+</section>
+
+</main>
+
+
+<article>
+<h4>Some Dnb examples</h4>
+<p>Audio sample</p>
+<audio controls>
+  <source src="dnb.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>
+
+<aside>
+<p>Video of dancing to dnb</p>
+</aside>
+<video width="320" height="240" controls>
+  <source src="dnb.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</article>
+
+<footer>
+  <p>Created by: Rad Rares</p>
+  <p>Contact information: <a href="mailto:rad.rares1@gmail.com">
+  rad.rares1@gmail.com</a>.</p>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

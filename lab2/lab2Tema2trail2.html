@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+.gallery {
+  position: relative;
+}
+.gallery__item--fullsize {
+  position: absolute;
+  visibility: hidden;
+}
+.gallery__item--fullsize {
+  position: absolute;
+  top: 0;
+  bottom: 80px;
+  visibility: hidden;
+}
+.gallery__item--fullsize > img {
+  width: 600px;
+  height: 400px;
+}
+.gallery__item--thumb {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  top: 410px;
+}
+.gallery__item--thumb:nth-child(3) {
+  left: 150px;
+}
+.gallery__item--thumb:nth-child(5) {
+  left: 285px;
+}
+.gallery__item--thumb:hover + .gallery__item--fullsize {
+  visibility: visible;
+}
+
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <div class="gallery__item gallery__item--thumb">
+    <img src="sunset2.jpg" weight=150 height=100>
+  </div>
+  <div class="gallery__item gallery__item--fullsize">
+    <img src="sunset2.jpg" weight=600 height=400>
+  </div>
+  <div class="gallery__item gallery__item--thumb">
+    <img src="sunset3.jpg" weight=150 height=100>
+  </div>
+  <div class="gallery__item gallery__item--fullsize">
+    <img src="sunset3.jpg" weight=600 height=400>
+  </div>
+  <div class="gallery__item gallery__item--thumb">
+    <img src="sunset4.jpg" weight=150 height=100>
+  </div>
+  <div class="gallery__item gallery__item--fullsize">
+    <img src="sunset4.jpg" weight=600 height=400>
+  </div>
+</div>
+
+
+</body>
+</html>
