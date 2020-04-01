@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="select-input">
+  <option value="Cluj">Cluj</option>
+  <option value="Alba">Alba</option>
+  <option value="Sibiu">Sibiu</option>
+</select>
+<select id="second-select-input">
+</select>
+<script>
+
+var first = document.getElementById('select-input'),
+	second = document.getElementById('second-select-input'),
+    albaCities = ['Zlatna', 'Blaj', 'Alba-Iulia'];
+    clujCities = ['Cluj-Napoca', 'Turda'];
+    sibiuCities = ['Sibiu', 'Copsa-Mica', 'Medias'];
+
+
+first.onchange = function (e) {
+  var val = e.target.value;
+  empty(second);
+  if(val==="Alba")
+  {
+  
+    for (var i = 0; i < 3; i += 1)
+    {
+      addOption(albaCities[i], second);
+    }
+  }
+  else if(val==="Cluj")
+  {
+    for (var i = 0; i < 2; i += 1)
+    {
+      addOption(clujCities[i], second);
+    }
+  }
+  else if(val==="Sibiu")
+  {
+    for (var i = 0; i < 3; i += 1)
+    {
+      addOption(sibiuCities[i], second);
+    }
+  }
+};
+
+
+
+function empty(select)
+{
+  select.innerHTML = '';
+}
+
+function addOption(val, select)
+{
+  var option = document.createElement('option');
+  option.value = val;
+  option.innerHTML = val;
+  select.appendChild(option);
+}
+
+</script>
+
+</body>
+</html>
