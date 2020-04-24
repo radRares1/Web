@@ -1,0 +1,131 @@
+*{
+	padding:0;
+	margin:0;
+}
+
+
+input[type=button]{
+  color: #FFFFFF;
+  background-color: #00ccff;
+  width:110px;
+  height:50px;
+  box-shadow: 0px 10px 0px #006680;
+  position: relative;
+  transition: all ease 0.3s;
+}
+
+
+button:active {
+  box-shadow: 0 5px 0 #006680;
+}
+
+
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {text-align: left;}
+
+#divA{
+	position: absolute;
+	display:inline;
+	width: 80%;
+	height: 60%;
+	left:50px;
+	top:90px;
+	background-color: teal;
+}
+
+#divA table{
+	position: relative;
+}
+
+#addForm{
+	position: relative;
+	left:10px;
+  top:5px;
+}
+
+#deleteForm{
+	position: relative;
+	left:60px;
+  top:5px;
+}
+
+#updateForm{
+  position: relative;
+  left:110px;
+  top:5px;
+}
+
+
+#divB {
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    left: 50px;
+    top: 500px;
+    background-color: #7cb753;
+}
+
+#divB form{
+	float:left;
+}
+
+#buttons
+{
+  position:absolute;
+  width: 80%;
+  height: 10%;
+  left: 50px;
+  top:20px;
+  float:left;
+}
+
+#button {
+
+  position: relative;
+  display: inline;
+  float:left;
+  top:5px;
+  left: 5px;
+}
+
+#button2
+{
+  display: inline;
+  float: left;
+  top:5px;
+  left:15px;
+}
+
+#buttons form
+{
+  position: relative;
+  display: inline;
+  float:left;
+  top:22px;
+  left:25px;
+}
+
+#buttons p
+{
+  position: relative;
+  display: inline;
+  float:left;
+  top:22px;
+  left:35px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+
