@@ -1,0 +1,80 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-family: Algerian;
+}
+
+label {
+    font-family: Arial;
+}
+
+#log{
+    position:absolute;
+    top:70px;
+    left:150px;
+}
+
+#reg{
+    position:absolute;
+    top:70px;
+    left:800px;
+}
+
+h1 {
+    position: absolute;
+    top:450px;
+    left:150px;
+    text-align: center;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    font-size: 80px;
+    transform: skewY(-10deg);
+    letter-spacing: 4px;
+    word-spacing: -8px;
+    color: #349feb;
+    text-shadow:
+            -1px -1px 0 #175f91,
+            -2px -2px 0 #175f91,
+            -3px -3px 0 #175f91,
+            -4px -4px 0 #175f91,
+            -5px -5px 0 #175f91,
+            -6px -6px 0 #175f91,
+            -7px -7px 0 #175f91,
+            -8px -8px 0 #175f91,
+            -30px 20px 40px dimgrey
+}
+
+
+
+#divA{
+    position: absolute;
+    display:inline;
+    width: 40%;
+    height: 20%;
+    left:150px;
+    top:90px;
+    background-color: #abeb34;
+}
+
+form{
+    position: relative;
+    top:10px;
+    left:10px;
+}
+
+form input,label{
+    position: relative;
+    top:2px;
+}
+
+#divB{
+    position: absolute;
+    display:inline;
+    width: 20%;
+    height: 40%;
+    left:800px;
+    top:90px;
+    background-color: #eb4034;
+}
