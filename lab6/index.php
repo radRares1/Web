@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="~/style.css">
 <script>
 
 function addRecepie(){ 
@@ -192,9 +192,9 @@ input[type=submit]{
       <select name="users" onchange="filterRecepies(this.value)">
       <option value="">Select a type:</option>
       <option value="desert">desert</option>
-      <option value="fel principal">fel principal</option>
-      <option value="fastfood">fastfood</option>
-      <option value="fel secundar">fel secundar</option>
+      <option value="principal">fel principal</option>
+      <option value="mic dejun">fastfood</option>
+      <option value="secundar">fel secundar</option>
       </select>
     </form>
 

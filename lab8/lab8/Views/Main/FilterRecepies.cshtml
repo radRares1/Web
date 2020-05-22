@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<style>
+    input[type=submit] {
+        color: black;
+        background-color: white;
+        width: 110px;
+        height: 50px;
+        border-top: 1px black;
+        box-shadow: 0px 10px 0px black;
+        position: relative;
+        transition: all ease 0.3s;
+    }
+</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Style/style.css">
+    <meta name="viewport" content="width=device-width" />
+    <title>Recepies</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $.get("/Main/getAllRecepies",
+                function (data, status) {
+                    $("#divA").html(data);
+                });
+        });
+        
+        $(document).ready(function(){
+            $("#button").click(function() {
+                $.get("/Main/filterRecepies", {recepieType : $("#filter").val()},
+                    function(data,status) {
+                        $("#divA").html(data);
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $("#addSubmit").click(function () {
+                $.post("/Main/addRecepie", { title: $("#title").val(), desc: $("#desc").val(), type: $("#type").val() },
+                    function (data, status) {
+                        alert("Recepie added!");
+                        $("addForm").reset();
+
+                    });
+            });
+        });
+
+   
+        $(document).on('click', '.deleteButton', function (event) {
+            $id = $(this).parent().parent().find("td:eq(0)").html();
+            $.post("/Main/deleteRecepie", { id: $id },
+                function (data, status) {
+                    alert("Recepie deleted!");
+                    location.reload(true);
+                    return false;
+
+                });
+        });
+
+        $(document).on('click', '.updateButton', function (event) {
+
+            $("#updateForm").css("display", "block");
+
+            $id2 = $(this).parent().parent().find("td:eq(0)").html();
+            $title = $(this).parent().parent().find("td:eq(1)").html();
+            $desc = $(this).parent().parent().find("td:eq(2)").html();
+            $type = $(this).parent().parent().find("td:eq(3)").html();
+            
+            $("#utitle").val($title);
+            $("#udesc").val($desc);
+            $("#utype").val($type);
+            
+        });
+
+
+        $(document).ready(function () {
+            $("#updateSubmit").click(function () {
+                $.post("/Main/updateRecepie", { id: $id2 , title: $("#utitle").val(), desc: $("#udesc").val(), type: $("#utype").val() },
+                    function (data, status) {
+                        alert("Recepie updated!");
+                        $("updateForm").css("display", "none");
+                       
+                    });
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <div id=buttons>
+
+        <input id="button" type="button" value="Filter Recepies" />
+
+        <form id="filterSelect">
+            <select id="filter" name="users">
+                <option value="">Select a type:</option>
+                <option value="desert">desert</option>
+                <option value="principal">fel principal</option>
+                <option value="mic dejun">mic dejun</option>
+                <option value="secundar">fel secundar</option>
+            </select>
+        </form>
+
+    </div>
+
+    <div id="divA"></div><br />
+
+    <br>
+    <div id="divB">
+
+        <form id="addForm" method="">
+            <label>title:</label><br>
+            <input type="text" id="title"><br>
+            <label>description:</label><br>
+            <input type="text" id="desc"><br>
+            <label>type:</label><br>
+            <input type="text" id="type"><br>
+            <br>
+            <input id="addSubmit" type="submit" value="add">
+        </form>
+
+        <form id="updateForm" method="">
+            <label>update title:</label><br>
+            <input type="text" id="utitle"><br>
+            <label>update description:</label><br>
+            <input type="text" id="udesc"><br>
+            <label>update type:</label><br>
+            <input type="text" id="utype"><br>
+            <br>
+            <input id="updateSubmit" type="submit" value="Save update">
+        </form>
+
+</body>
