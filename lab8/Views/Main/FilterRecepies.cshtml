@@ -53,14 +53,23 @@
 
    
         $(document).on('click', '.deleteButton', function (event) {
-            $id = $(this).parent().parent().find("td:eq(0)").html();
-            $.post("/Main/deleteRecepie", { id: $id },
-                function (data, status) {
-                    alert("Recepie deleted!");
-                    location.reload(true);
-                    return false;
 
-                });
+            //added confirm pop-up validation for the delete buttons
+
+            if (confirm("Are you sure you want to delete?")) {
+
+                $id = $(this).parent().parent().find("td:eq(0)").html();
+                $.post("/Main/deleteRecepie", { id: $id },
+                    function (data, status) {
+                        alert("Recepie deleted!");
+                        location.reload(true);
+                        return false;
+
+                    });
+            }
+            else {
+                alert("Ok, the delete was canceled!");
+            }
         });
 
         $(document).on('click', '.updateButton', function (event) {

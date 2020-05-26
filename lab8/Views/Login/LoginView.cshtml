@@ -15,19 +15,25 @@
 
     $(document).ready(function () {
         $("#log").click(function () {
-            alert("intra");
-            $.post("/Login/Login", { name: $("#name").val(), pass: $("#pass").val() }, 
-                function (data, success) {
-                    console.log(data);
-                    if (data["success"] === true) {
+            //added trim
+            if ($("#name").val().trim() == "" || $("#pass").val().trim() == "") {
+                alert("please input non-empty username or/and password");
+            }
+            else {
+                $.post("/Login/Login", { name: $("#name").val(), pass: $("#pass").val() },
+                    function (data, success) {
+                        console.log(data);
+                        if (data["success"] === true) {
 
-                        location.href = 'Main';
+                            location.href = 'Main';
 
-                    } else {
-                        alert("error back there");
-                    }
-                })
+                        } else {
+                            alert("error back there");
+                        }
+                    });
+            }
             });
+    
         });
     
     $(document).ready(function () {
