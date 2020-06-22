@@ -16,6 +16,15 @@
     $(document).ready(function () {
         $("#log").click(function () {
             //added trim
+
+
+            var patt1 = /[:'+,/]/i;
+            var checkName = $("#name").val().search(patt1);
+            var checkPw = $("#pass").val().search(patt1);
+
+            if (checkName != -1 || checkPw != -1)
+            { alert("please don't use :'+,/ as characters in the username or password"); }
+
             if ($("#name").val().trim() == "" || $("#pass").val().trim() == "") {
                 alert("please input non-empty username or/and password");
             }
@@ -38,18 +47,30 @@
     
     $(document).ready(function () {
         $("#reg").click(function () {
-            alert("intra");
-            $.post("/Login/Register", { name: $("#ruser").val(), pass: $("#rpass").val() },
-                function (data, success) {
-                    console.log(data);
-                    if (data["success"] === true) {
 
-                       alert("registered")
+            var patt1 = /[:'+,/]/i;
+            var checkName = $("#ruser").val().search(patt1);
+            var checkPw = $("#rpass").val().search(patt1);
 
-                    } else {
-                        alert("error back there");
-                    }
-                })
+            if (checkName != -1 || checkPw != -1)
+            { alert("please don't use :'+,/ as characters in the username or password"); }
+
+            if ($("#name").val().trim() == "" || $("#pass").val().trim() == "") {
+                alert("please input non-empty username or/and password");
+            }
+            else {
+                $.post("/Login/Register", { name: $("#ruser").val(), pass: $("#rpass").val() },
+                    function (data, success) {
+                        console.log(data);
+                        if (data["success"] === true) {
+
+                            alert("registered")
+
+                        } else {
+                            alert("error back there");
+                        }
+                    });
+            }
         });
     });
 
