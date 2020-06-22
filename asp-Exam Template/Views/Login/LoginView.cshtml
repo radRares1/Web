@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Style/style2.css">
+    <title>Login</title>
+</head>
+
+
+<script>
+
+    $(document).ready(function () {
+        $("#log").click(function () {
+            //added trim
+            if ($("#name").val().trim() == "" || $("#pass").val().trim() == "") {
+                alert("please input non-empty username or/and password");
+            }
+            else {
+                $.post("/Login/Login", { name: $("#name").val(), pass: $("#pass").val() },
+                    function (data, success) {
+                        console.log(data);
+                        if (data["success"] === true) {
+
+                            location.href = 'Main';
+
+                        } else {
+                            alert("error back there");
+                        }
+                    });
+            }
+            });
+    
+        });
+    
+    $(document).ready(function () {
+        $("#reg").click(function () {
+            alert("intra");
+            $.post("/Login/Register", { name: $("#ruser").val(), pass: $("#rpass").val() },
+                function (data, success) {
+                    console.log(data);
+                    if (data["success"] === true) {
+
+                       alert("registered")
+
+                    } else {
+                        alert("error back there");
+                    }
+                })
+        });
+    });
+
+</script>
+
+
+<body>
+
+    <div id="divA">
+
+        <form id="a">
+            <label>User name:</label><br>
+            <input type="text" id="name"><br>
+            <label>Password:</label><br>
+            <input type="password" id="pass"><br>
+            <br>
+            <button id="log" type="reset">Login</button>
+        </form>
+
+    </div>
+
+    <div id="divB">
+
+        <form action="Register" method="">
+            <label>User name:</label><br>
+            <input type="text" id="ruser"><br>
+            <label>Password:</label><br>
+            <input type="password" id="rpass"><br>
+            <br>
+            <button id="reg" type="reset">Register</button>
+        </form>
+
+    </div>
+
+    <label id="log2">Please log in here:</label>
+    <label id="reg2">Please register in here:</label>
+
+</body>

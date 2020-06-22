@@ -1,0 +1,194 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<style>
+    #addAsset,#sendAssets,#updateSubmit {
+        color: black;
+        background-color: white;
+        width: 110px;
+        height: 50px;
+        border-top: 1px black;
+        box-shadow: 0px 10px 0px black;
+        position: relative;
+        transition: all ease 0.3s;
+        display:block;
+    }
+</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Style/style.css">
+    <meta name="viewport" content="width=device-width" />
+    <title>Recepies</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $.get("/Main/getAllAssets",
+                function (data, status) {
+                    $("#divA").html(data);
+                });
+        });
+        
+        $(document).ready(function(){
+            $("#button").click(function() {
+                $.get("/Main/filterRecepies", {recepieType : $("#filter").val()},
+                    function(data,status) {
+                        $("#divA").html(data);
+                });
+            });
+        });
+
+
+       
+   
+        $(document).on('click', '.deleteButton', function (event) {
+
+            //added confirm pop-up validation for the delete buttons
+
+            if (confirm("Are you sure you want to delete?")) {
+
+                $id = $(this).parent().parent().find("td:eq(0)").html();
+                $.post("/Main/deleteAsset", { id: $id },
+                    function (data, status) {
+                        alert("asset deleted!");
+                        location.reload(true);
+                        return false;
+
+                    });
+            }
+            else {
+                alert("Ok, the delete was canceled!");
+            }
+        });
+
+        $(document).on('click', '.updateButton', function (event) {
+
+            $("#updateForm").css("display", "block");
+
+            $id2 = $(this).parent().parent().find("td:eq(0)").html();
+            $title = $(this).parent().parent().find("td:eq(1)").html();
+            $desc = $(this).parent().parent().find("td:eq(2)").html();
+            $value = $(this).parent().parent().find("td:eq(3)").html();
+            
+            $("#uname").val($title);
+            $("#udesc").val($desc);
+            $("#uvalue").val($value);
+            
+        });
+
+
+        $(document).ready(function () {
+            $("#updateSubmit").click(function () {
+                $.post("/Main/updateAsset", { id: $id2 , name: $("#uname").val(), desc: $("#udesc").val(), value: $("#uvalue").val() },
+                    function (data, status) {
+                        alert("Asset updated!");
+                        $("updateForm").css("display", "none");
+                       
+                    });
+            });
+        });
+
+        let assets = [];
+
+        $(document).ready(function () {
+            $("#addAsset").click(function () {
+
+                var name = document.getElementById('name').value;
+                var desc = document.getElementById('desc').value;
+                var val = document.getElementById('value').value;
+            
+                assets.push({ "Name": name, "Description": desc, "Value": val });
+
+                console.log(assets);
+
+                var table = document.getElementById("toAdd");
+
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                cell1.innerHTML = name;
+                cell2.innerHTML = desc;
+                cell3.innerHTML = val;
+
+                document.getElementById("addForm").reset();
+            })
+        });
+
+        $(document).ready(function () {
+            $("#sendAssets").click(function () {
+                $.post(
+                    "Main/addAssets",
+                    { action: "addAssets", assetsToAdd: JSON.stringify(assets) },
+                    function (data) {
+                        location.reload();
+                    }
+                );
+                assets = [];
+                $("#toAdd").detach();
+            })
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+    @*<div id=buttons>
+
+        <input id="button" type="button" value="Filter Recepies" />
+
+        <form id="filterSelect">
+            <select id="filter" name="users">
+                <option value="">Select a type:</option>
+                <option value="desert">desert</option>
+                <option value="principal">fel principal</option>
+                <option value="mic dejun">mic dejun</option>
+                <option value="secundar">fel secundar</option>
+            </select>
+        </form>
+
+    </div>*@
+
+    <div id="divA"></div><br />
+
+    <br>
+    <div id="divB">
+
+        <form id="addForm" method="">
+            <label>name:</label><br>
+            <input type="text" id="name"><br>
+            <label>description:</label><br>
+            <input type="text" id="desc"><br>
+            <label>type:</label><br>
+            <input type="text" id="value"><br>
+            <br>
+            <input id="addAsset" type="button" value="Add Assets" onclick="addAsset">
+            <input id="sendAssets" type="button" value="Send Assets">
+            <br />
+        </form>
+
+        <form id="updateForm" method="">
+            <label>update title:</label><br>
+            <input type="text" id="uname"><br>
+            <label>update description:</label><br>
+            <input type="text" id="udesc"><br>
+            <label>update type:</label><br>
+            <input type="text" id="uvalue"><br>
+            <br>
+            <input id="updateSubmit" type="submit" value="Save update">
+        </form>
+
+        <table id="toAdd">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Value</th>
+        </table>
+
+        </div>
+
+</body>

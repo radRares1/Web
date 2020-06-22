@@ -1,0 +1,55 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Algerian;
+}
+
+label {
+    font-family: Arial;
+}
+
+#log2 {
+    position: absolute;
+    top: 70px;
+    left: 150px;
+}
+
+#reg2 {
+    position: absolute;
+    top: 70px;
+    left: 800px;
+}
+
+
+#divA {
+    position: absolute;
+    display: inline;
+    width: 40%;
+    height: 20%;
+    left: 150px;
+    top: 90px;
+    background-color: #abeb34;
+}
+
+form {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+    form input, label {
+        position: relative;
+        top: 2px;
+    }
+
+#divB {
+    position: absolute;
+    display: inline;
+    width: 20%;
+    left: 800px;
+    top: 90px;
+    background-color: #eb4034;
+}
